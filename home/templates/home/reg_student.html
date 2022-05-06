@@ -1,0 +1,133 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+  {% block menu %}
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a href="#top" class="top">
+            <i class="fa-solid fa-jet-fighter-up"></i>
+          </a>
+          <div class="collapse navbar-collapse">
+            <div class="navbar-nav me-auto">
+              
+              <a class="navbar-brand logo" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="logo"></i>&nbsp;&nbsp; <span class="robo">Robo</span>school</a>
+  
+              <div id="snackbar">Web sahifa manzili nusxalandi...</div>
+            </div>
+
+            <div class="d-flex">
+              
+               <a href="{% url 'kirish' %}" class="btn btn-light btn1"><i class="fa-solid fa-right-to-bracket"></i>
+                &nbsp;Kirish</a>
+          
+              <a href="{% url 'registration' %}" class="btn btn-danger btn2"><i class="fa-solid fa-user-plus"></i> &nbsp;Ro'yxatdan
+                o'tish</a>
+  
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <nav class="navbar navbar-expand-sm bg-light justify-content-center p-0 b-shadow">
+        <ul class="navbar-nav dem">
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="{% url 'h_news' %}"> IT maqolalar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Vedio teach</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Amaliyot</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link text-secondary">Test</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'h_courses' %}" class="nav-link text-secondary">Kurslar</a>
+          </li>
+        </ul>
+      </nav>
+
+  {% endblock %}
+
+
+{% block savollar %}
+{% endblock %}
+
+
+{% block asoschilari%}
+{% endblock %}
+
+
+{% block body %}
+<style type="text/css">
+form input {
+  height: 70px;
+}
+</style>
+
+<div class="container">
+<div class="row mt-5 mb-5">
+
+  <p class="fw-bolder fs-4">Ma'lumotlaringizga etiborli bo'ling. Ma'lumotlaringizni to'ldirgach yuborish tugmasi bosish orqali avtomatik accountingiz ochiladi.</p>
+
+
+
+<div class="col-lg-5 mt-4 mb-4 m-auto">
+
+<form method="POST" action="{% url 'reg_student' %}" enctype="multipart/form-data">
+  {% csrf_token %} 
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Ism</label>
+    {{ form.first_name }}
+    {{ form.first_name.errors.as_ul }}
+
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Email</label>
+    {{ form.email }}
+    {{ form.email.errors.as_ul }}
+    
+  </div>
+
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Tel nomber</label>
+    {{ form.phone_number }}
+    {{ form.phone_number.errors.as_ul }}
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Login</label>
+    {{ form.username }}
+    {{ form.username.errors.as_ul }}
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Parol</label>
+    {{ form.password1 }}
+    {{ form.password1.errors.as_ul }}
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Parol qayta</label>
+    {{ form.password2 }}
+    {{ form.password2.errors.as_ul }}
+  </div>
+
+
+
+  <button type="submit" class="btn btn-primary">Yuborish</button>
+</form>
+
+
+</div>
+</div>
+
+</div> 
+{% endblock %}

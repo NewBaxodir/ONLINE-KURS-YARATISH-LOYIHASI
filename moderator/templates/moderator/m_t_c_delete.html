@@ -1,0 +1,131 @@
+{% extends 'moderator_html_database/base.html' %}
+{% load static %}
+
+
+{% block LARGE_LABEL %}
+  <h4 class="m-0">Kurslar ro'yxati</h4>
+{% endblock %}
+
+{% block where_page %}
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Asosiy</a></li>
+              <li class="breadcrumb-item active">Kurslar ro'yxati</li>
+            </ol>
+          </div>
+          {% endblock %}
+
+
+{% block create_course %}
+   <li class="nav-item menu-open">
+     <a href="#" class="nav-link active">
+       <i class="nav-icon fas fa-edit"></i>
+       <p>
+         Kurslar nazorati
+         <i class="fas fa-angle-left right"></i>
+       </p>
+     </a>
+     <ul class="nav nav-treeview">
+       <li class="nav-item">
+         <a href="{% url 'm_t_courses' %}" class="nav-link active">
+           <i class="far fa-circle nav-icon"></i>
+           <p>Kurs sozlamalari</p>
+         </a>
+       </li>
+       <li class="nav-item">
+         <a href="{% url 'm_c_database' %}" class="nav-link">
+           <i class="far fa-circle nav-icon"></i>
+           <p>Kurs bazasi</p>
+         </a>
+       </li>
+     </ul>
+   </li>
+{% endblock %}
+
+
+{% block base_window %}
+
+ <section class="content">
+  <div class="container-fluid">
+    <div class="card">
+      
+      <div class="card-header">
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+  
+  
+ <form method="POST" action="">
+  {% csrf_token %} 
+    <div class="card-body pb-0">
+    <div class="row">
+            
+
+ 
+  <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+  <div class="card bg-light d-flex flex-fill">
+  <div class="card-header text-info border-bottom-0">
+    <a href="#"> {{ course.coursen }} - Kursi</a>
+  </div>
+  
+  <div class="card-body pt-0">
+  <div class="row">
+  <div class="col-7">
+    <h2 class="lead"><b>{{ course.user }}</b></h2>
+  <p class="text-muted text-sm"><b>Haqida: </b> {{ course.user.about }} </p>
+  <ul class="ml-4 mb-0 fa-ul text-muted">
+  <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Manzil: {{ course.user.address }}</li>
+  <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Tel #: {{ course.user.phone_number}}</li>
+  </ul>
+  </div>
+  <div class="col-5 text-center">
+  <img src="
+  {% if course.icon %}
+  {{ course.icon.url }}
+  {% else %}
+  {% static 'images/lesson.png' %}
+  {% endif %}
+  " alt="user-avatar" class="img-circle img-fluid">
+  </div>
+  </div>
+  </div>
+  <div class="card-footer">
+  <div class="text-right">
+  
+  <div class="text-right">
+  <button class="btn btn-danger" type="submit">
+  <i class="fas fa-trash"></i>
+  O'chirishni tasdiqlang
+  </button>
+  </div>
+
+
+  </div>
+  </div>
+  </div>
+  </div>
+ 
+
+
+
+  </div>
+  </div>
+   </form>
+  </div>
+
+
+  </section>
+
+
+{% endblock %}
+
+
+
+

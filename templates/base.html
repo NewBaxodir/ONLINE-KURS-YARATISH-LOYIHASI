@@ -1,0 +1,396 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {% block title %} 
+    {% endblock %}
+  </title>
+  
+
+  <!-- main stules -->
+  <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+  <!-- bootstrap css -->
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  </link>
+
+  <!-- google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  
+
+  <!-- icon -->
+  <link rel="icon" href="{% static 'images/logo.png' %}" type="image/png">
+  <!-- chat -->
+  <link rel="stylesheet" href="{% static 'styles/stules.css' %}">
+
+
+</head>
+
+<body>
+
+  {% block menu %}
+  <section class="bosh">
+    <div class="overlay"></div>
+    <video src="{% static 'images/bg.mp4' %}" autoplay loop muted></video>
+    <header class="header" id="top" data-image-src="./images/landing.jpg">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a href="#top" class="top">
+            <i class="fa-solid fa-jet-fighter-up"></i>
+          </a>
+          <div class="collapse navbar-collapse">
+            <div class="navbar-nav me-auto">
+              
+              <a class="navbar-brand logo" id="myItem" data-page_id="12" onclick="myFunction()">
+                <img src="{% static 'images/logo.png' %}" alt="logo"></i>&nbsp;&nbsp; <span class="robo">Robo</span>school</a>
+  
+              <div id="snackbar">Web sahifa manzili nusxalandi...</div>
+            </div>
+
+            <div class="d-flex">
+              
+               <a href="{% url 'kirish' %}" class="btn btn-light btn1"><i class="fa-solid fa-right-to-bracket"></i>
+                &nbsp;Kirish</a>
+          
+              <a href="{% url 'registration' %}" class="btn btn-danger btn2"><i class="fa-solid fa-user-plus"></i> &nbsp;Ro'yxatdan
+                o'tish</a>
+  
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <nav class="navbar navbar-expand-sm bg-light justify-content-center p-0 b-shadow">
+        <ul class="navbar-nav dem">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'h_news' %}"> IT maqolalar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Vedio teach</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Amaliyot</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Test</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'h_courses' %}" class="nav-link">Kurslar</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-content">
+        <div class="container">
+          <div class="name">
+            <h2>Online IT school</h2>
+            <div>
+              <span class="element"></span>
+            </div>
+            <div class="btn-contain">
+              <a href="{% url 'h_courses' %}" class="button btn1 btn-light">
+                <span>
+                  Hoziroq biz bilan boshlang&nbsp;
+                </span> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </header>
+  </section>
+  {% endblock %}
+
+
+
+  {% block savollar %}
+  <div class="about-me">
+    <div class="container">
+      <div class="conversation">
+        <div class="conversation-1">
+          <div class="conver-1 question">
+            <img src="{% static 'images/user.webp' %}" alt="user">
+            <div class="conv-text">
+              <h5>Jeek Ma</h5>
+              <p>
+                Bu qanday platforma?
+              </p>
+            </div>
+          </div>
+          <div class="conver-1 answer">
+            <div class="conv-text">
+              <h5>Dinmuhammad Yagafarov</h5>
+              <p>
+                Bu platfomaning nomi <span class="robo">Roboschool</span>! Bu yerda siz dasturlash texnologiyalarini
+                o'rnishingiz mumkin!
+              </p>
+            </div>
+            <img src="{% static 'images/user1.jpg' %}" alt="user">
+          </div>
+
+        </div>
+        <div class="conversation-1">
+          <div class="conver-1 question">
+            <img src="{% static 'images/user.webp' %}" alt="user">
+            <div class="conv-text">
+              <h5>Jeek Ma</h5>
+              <p>
+                Bu platformada qanday dasturlash tillarini o'rganishim mumkin?
+              </p>
+            </div>
+          </div>
+          <div class="conver-1 answer">
+            <div class="conv-text">
+              <h5>Dinmuhammad Yagafarov</h5>
+              <p>
+                Biz veb-dasturlash, o'yin yaratish va dasturiy ta'minot ishlab chiqishni o'rgatamiz!
+              </p>
+            </div>
+            <img src="{% static 'images/user1.jpg' %}" alt="user">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+    {% endblock %}
+
+
+
+
+
+
+  {% block asoschilari%}
+  <main>
+    <section>
+      <div class="container h2 text-center">
+        <h2>
+          Loyiha asoschilari
+
+        </h2>
+        <p>
+          Roboschool loyihasining asoschilari haqida ma'lumot
+        </p>
+      </div>
+      <div class="container">
+        <div class="cards">
+          <div class="container">
+            
+            <div class="card card_teacher" data-tilt data-tilt-max="50" data-tilt-speed="100" data-tilt-perspective="500">
+              <div class="content2">
+                <img src="{% static 'images/baxodir.png' %}" alt="user">
+                <h3>
+                  B.Davirov
+                </h3>
+              </div>
+              <div class="content">
+                <h3>Front & Back-end</h3>
+                <p>
+                  Mal.tahlilchisi Android & Veb-dasturchi & Python&Django
+                </p>
+
+              </div>
+            </div>
+
+            <div class="card card_teacher" data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500">
+              <div class="content2">
+                <img src="{% static 'images/user1.jpg' %}" alt="user">
+                <h3>D.Yagafarov</h3>
+              </div>
+              <div class="content">
+                <h3>Web dasturchi</h3>
+                <p>
+                  C++, Python ,Frontend, OOP, Javascript,Telegram bot texnologiyalari bo'yicha mutaxasis
+                </p>
+              </div>
+            </div>
+
+            <div data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500" class="card card_teacher">
+              <div class="content2">
+                <img src="{% static 'images/nurgeldi.png' %}" alt="user">
+                <h3>N.Yarashbayev</h3>
+              </div>
+              <div class="content">
+                <h3>Back-end</h3>
+                <p>
+                  C++, Python, Machine Learning, Computer vision
+                </p>
+              </div>
+            </div>
+            <div data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500" class="card card_teacher">
+              <div class="content2">
+
+                <img src="{% static 'images/user.webp' %}" alt="user">
+                <h3>John Smit</h3>
+              </div>
+
+              <div class="content">
+                <h3>Yaratuvchi</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae mollitia, amet voluptate, sequi
+                  laudantium nisi tempore reiciendis
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% endblock %}
+
+
+
+{% block body %}
+{% endblock %}
+
+
+  <!-- chat -->
+{% block footer %}
+  <footer>
+    <div class="main-content">
+      <div class="left box container">
+        <h2>Biz haqimizda</h2>
+        <div class="content">
+          <p>&nbsp;Biz veb-dasturlash, o'yin yaratish va dasturiy ta'minot ishlab chiqishni o'rgatamiz. Kurslarni oling,
+            muammolarni hal qiling, yangiliklarni ko'ring va dasturlashning haqiqiy ustasiga aylaning!</p>
+          <div class="wrapper">
+            <div class="icon facebook">
+              <div class="tooltip">
+                Facebook
+              </div>
+              <span><i class="fab fa-facebook-f"></i></span>
+            </div>
+            <div class="icon telegram">
+              <div class="tooltip">
+                Telegram
+              </div>
+              <span><i class="fab fa-telegram"></i></span>
+            </div>
+            <div class="icon instagram">
+              <div class="tooltip">
+                Instagram
+              </div>
+              <span><i class="fab fa-instagram"></i></span>
+            </div>
+            <div class="icon github">
+              <div class="tooltip">
+                Github
+              </div>
+              <span><i class="fab fa-github"></i></span>
+            </div>
+            <div class="icon youtube">
+              <div class="tooltip">
+                YouTube
+              </div>
+              <span><i class="fab fa-youtube"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="center box">
+        <h2>Manzil</h2>
+        <div class="content">
+          <div class="place">
+            <span class="fas fa-map-marker-alt"></span>
+            <span class="text">O'zbekiston, Samarqand</span>
+          </div>
+          <div class="phone">
+            <span class="fas fa-phone-alt"></span>
+            <span class="text">+998-xx xxx-xx-xx</span>
+          </div>
+          <div class="email">
+            <span class="fas fa-envelope"></span>
+            <span class="text">info@example.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="right box">
+        <h2>Biz bilan aloqa</h2>
+        <div class="content">
+          <form action="#">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="floatingPassword" placeholder="Email">
+              <label for="floatingemail">Email *</label>
+            </div>
+            <div class="form-floating mb-3">
+              <textarea class="form-control" placeholder="Xabar Jo'nating" id="floatingTextarea2"
+                style="height: 100px"></textarea>
+              <label for="floatingTextarea2">Xabar *</label>
+            </div>
+            <div class="button-footer">
+              <a type="submit" class="btn btn1 btn-light">Jo'natish</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="chatchat">
+      <input type="checkbox" id="check"> <label class="chat-btn" for="check"> <i class="fa fa-commenting-o comment"></i>
+        <i class="fa fa-close close"></i> </label>
+      <div class="wrapper">
+        <div class="chat">
+          <div class="chat-title">
+            <h1>Bahodir Davirov</h1>
+            <h2>Full stack</h2>
+            <figure class="avatar">
+             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" />
+            </figure>
+          </div>
+          <div class="messages">
+            <div class="messages-content"></div>
+          </div>
+          <div class="message-box">
+            <textarea type="text" class="message-input" placeholder="Type message..."></textarea>
+            <button type="submit" class="message-submit">Jo'natish</button>
+          </div>
+
+        </div>
+        <div class="bg"></div>
+      </div>
+    </div>
+
+
+    <div class="bottom">
+      <center>
+        <span class="credit">Yaratuvchi <a href="#">Roboschool</a> | </span>
+        <span class="far fa-copyright"></span><span> 2022 Barcha huquqlar himoyalangan.</span>
+      </center>
+    </div>
+  </footer>
+{% endblock %}
+
+
+
+
+
+
+
+
+  <!-- vanilla js -->
+  <script type="text/javascript" src="{% static 'js/vanilla.js' %}"></script>
+  
+  <!-- typed js -->
+  <script src="{% static 'js/typed.js' %}"></script>
+  
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/7515aab393.js" crossorigin="anonymous"></script>
+  </script>
+  
+  <!-- Bootstrap js -->
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  
+  <!-- main js -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

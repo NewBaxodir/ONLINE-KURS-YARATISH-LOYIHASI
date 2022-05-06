@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block kirish %}
+    <a href="{% url 'kirish' %}" class="btn btn-light btn1"><i class="fa-solid fa-right-to-bracket"></i>
+                &nbsp;Kirish</a>
+{% endblock %}
+
+
+{% block registration %}
+<a href="{% url 'registration' %}" class="btn btn-danger btn2">
+	<i class="fa-solid fa-user-plus"></i> &nbsp;
+	Ro'yxatdan o'tish</a>
+{% endblock %}

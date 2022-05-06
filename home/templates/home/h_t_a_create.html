@@ -1,0 +1,126 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+  {% block menu %}
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a href="#top" class="top">
+            <i class="fa-solid fa-jet-fighter-up"></i>
+          </a>
+          <div class="collapse navbar-collapse">
+            <div class="navbar-nav me-auto">
+              
+              <a class="navbar-brand logo" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="logo"></i>&nbsp;&nbsp; <span class="robo">Robo</span>school</a>
+  
+              <div id="snackbar">Web sahifa manzili nusxalandi...</div>
+            </div>
+
+            <div class="d-flex">
+              
+               <a href="{% url 'kirish' %}" class="btn btn-light btn1"><i class="fa-solid fa-right-to-bracket"></i>
+                &nbsp;Kirish</a>
+          
+              <a href="{% url 'registration' %}" class="btn btn-danger btn2"><i class="fa-solid fa-user-plus"></i> &nbsp;Ro'yxatdan
+                o'tish</a>
+  
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <nav class="navbar navbar-expand-sm bg-light justify-content-center p-0 b-shadow">
+        <ul class="navbar-nav dem">
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="{% url 'h_news' %}"> IT maqolalar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Vedio teach</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Amaliyot</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link text-secondary">Test</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'h_courses' %}" class="nav-link text-secondary">Kurslar</a>
+          </li>
+        </ul>
+      </nav>
+
+  {% endblock %}
+
+
+{% block savollar %}
+{% endblock %}
+
+
+{% block asoschilari%}
+{% endblock %}
+
+
+{% block body %}
+<style type="text/css">
+form input {
+  height: 70px;
+}
+</style>
+
+
+<div class="container">
+<div class="row mt-5 mb-5">
+
+<p class="fw-bolder fs-4">Malumotlaringizni aniq qilib yuborishingizni iltimos qilamiz. Arizangiz tez orada ko'rib chiqiladi.</p>
+
+<div class="col-lg-5 mt-4 mb-4 m-auto">
+
+
+<form method="POST" action="{% url 'h_t_a_create' %}" enctype="multipart/form-data">
+  {% csrf_token %} 
+
+  {% for field in form %}
+    <div class="mb-4">
+    {{ field.label }}
+    {{ field }}
+    {{ field.errors.as_ul }}
+    </div>
+  {% endfor %}
+
+
+  <button type="submit" class="btn btn-primary">Yuborish</button>
+</form>
+
+
+</div>
+</div>
+
+</div> 
+
+
+<!-- <script type="text/javascript">
+  let formatPhoneNumber = (str) => {
+  //Filter only numbers from the input
+  let cleaned = ('' + str).replace(/\D/g, '');
+  
+  //Check if the input is of correct
+  let match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+  
+  if (match) {
+    //Remove the matched extension code
+    //Change this to format for any country code.
+    let intlCode = (match[1] ? '+1 ' : '')
+    return [intlCode, '(', match[2], ') ', match[3], '-', match[4]].join('')
+  }
+  
+  return null;
+}
+</script> -->
+
+{% endblock %}
+
+
+
+
+

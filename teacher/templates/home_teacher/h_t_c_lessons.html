@@ -1,0 +1,112 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block menu %}
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a href="#top" class="top">
+            <i class="fa-solid fa-jet-fighter-up"></i>
+          </a>
+          <div class="collapse navbar-collapse">
+            <div class="navbar-nav me-auto">
+              
+              <a href="{% url 'h_t_page' %}" class="navbar-brand logo">
+                <img src="{% static 'images/logo.png' %}" alt="logo"></i>&nbsp;&nbsp; <span class="robo">Robo</span>school</a>
+  
+              <div id="snackbar">Web sahifa manzili nusxalandi...</div>
+            </div>
+
+            <div class="d-flex">
+              
+    <div class="dropdown">
+    <span class="text-white dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user me-1"></i> {{ request.user.first_name }} {{ request.user.last_name }}</span>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="{% url 'h_t_profile' %}">Profile</a></li>
+    <li><a class="dropdown-item" href="{% url 'logout_view' %}">Chiqish</a></li>
+    </ul>
+    </div>
+  
+            </div>
+          </div>
+        </div>
+      </nav>
+  <nav class="navbar navbar-expand-sm bg-light justify-content-center p-0 b-shadow">
+        <ul class="navbar-nav dem">
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#"> IT maqolalar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Vedio teach</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Amaliyot</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link text-secondary">Test</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'h_t_c_all' %}" class="nav-link text-secondary">Kurslar</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'h_t_mycourses' %}" class="nav-link">Mening kurslarim</a>
+          </li>
+        </ul>
+      </nav>
+{% endblock %}
+
+
+
+{% block savollar %}
+{% endblock %}
+
+
+{% block asoschilari%}
+{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid" style=" height: auto;">
+
+<div class="container mt-5">
+  <div class="page-header mb-4">
+  <h3 class="page-heading">Darslar</h3>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    
+    {% for l in lessons %}
+    <!-- # -->
+    <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+      <!-- # -->
+    <div class="card-body shadow p-3 mb-5 bg-body rounded">
+    <h5 class="card-title">{{ forloop.counter }}. {{ l.title }}</h5>
+    <p class="card-text">{{l.description}}</p>
+    <span class="text-muted me-3"><i class="fa-solid fa-eye"></i> 12K</span>
+    <span class="text-muted me-3"> {{ l.datetime }}</span>
+      <a href="#" class="card-link"></a>
+      <a href="{% url 'h_t_c_l_update' l.user_id l.pk %}" class="card-link text-primary">Yangilash</a>
+      <a href="{% url 'h_t_c_l_delete' l.user_id l.pk %}" class="card-link text-danger">O'chirish</a>
+    </div>
+      <!-- # -->
+
+    </div>
+    <!-- # -->
+  {% endfor %}
+
+  
+
+<a href="{% url 'h_t_c_l_create' course.pk %}" class="btn btn-primary btn-lg mb-5" tabindex="-1" role="button">Yangi dars yaratish</a>
+ 
+
+    
+  </div>
+</div>
+
+
+</div>
+{% endblock %}

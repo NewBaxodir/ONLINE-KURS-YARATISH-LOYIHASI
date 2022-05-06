@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+<!-- title -->
+{% block title %} Bosh sahifa {% endblock %}
+<!-- /title -->
+
+
+
+{% block kirish %}
+<!-- <a href="{% url 'kirish' %}">
+	     <button type="button" class="btn btn-light mx-3">Kirish</button>
+	     </a> -->
+{% endblock %}
+
+{% block roboshool %}
+    <a class="navbar-brand fs-2 text-white" href="{% url 'h_t_page' %}">Roboschool</a>
+{% endblock %}
+
+
+{% block registration %}
+<div class="dropdown">
+  <span class="text-white dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user me-1"></i> {{ request.user.first_name }} {{ request.user.last_name }}</span>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="{% url 'h_t_profile' %}">Profile</a></li>
+    <li><a class="dropdown-item" href="{% url 'logout_view' %}">Chiqish</a></li>
+  </ul>
+</div>
+
+{% endblock %}
+
+
+{% block add_menu %}
+<li class="nav-item ">
+          <a class="nav-link fs-5 text-primary" href="{% url 'h_t_courses' %}">Mening kurslarim</a>
+        </li>
+{% endblock %}
+
+
+{% block body%}
+<div class="container-fluid" style=" height: auto;">
+
+<div class="container mt-5">
+  <div class="page-header mb-4">
+                <h2 class="page-heading">Dars</h2>
+              </div>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+    
+  
+    <!-- # -->
+    <div class="col-sm-12 col-md-12 mb-3">
+      <!-- # -->
+      <div class="card ms-3">
+      <div class="card-body">
+      <h5 class="card-title">{{ course.title }}</h5>
+      <p class="card-text mt-2">{{course.description}}</p>
+      <p class="card-text mt-2">{{course.text|safe}}</p>
+      <span class="text-muted me-3"><i class="fa-solid fa-eye"></i> 12K</span>
+      <a href="#" class="card-link">{{ course.datetime }}</a>
+      </div>
+      </div>
+      <!-- # -->
+    </div>
+    <!-- # -->
+
+
+    
+</div>
+</div>
+
+</div>
+
+{% endblock %}

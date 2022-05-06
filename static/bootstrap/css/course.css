@@ -1,0 +1,23 @@
+
+/* Saytning barcha sahifasidagi bir xil fondai menulari */
+header{
+
+background-color: #232323;
+
+}
+
+footer{
+
+background-color: #232323;
+
+}
+
+
+.fa-telegram, .fa-vk, .fa-facebook-f, .fa-twitter, .fa-youtube, .fa-instagram{
+    color: #ef6651;
+  }
+
+.nav-item, a{
+text-decoration: none;
+color: #9a9a9a;
+}

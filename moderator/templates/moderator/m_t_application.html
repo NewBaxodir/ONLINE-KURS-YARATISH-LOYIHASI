@@ -1,0 +1,158 @@
+{% extends 'moderator_html_database/base.html' %}
+{% load static %}
+
+
+{% block LARGE_LABEL %}
+            <h4 class="m-0">O'quvchi profile</h4>
+            {% endblock %}
+
+{% block where_page %}
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Asosiy</a></li>
+              <li class="breadcrumb-item active">O'quvchi profile</li>
+            </ol>
+          </div>
+          {% endblock %}
+
+
+    {% block arizalar %}
+    <li class="nav-item menu-open">
+      <a href="#" class="nav-link active active">
+      <i class="nav-icon far fa-envelope"></i>
+      <p>
+      Arizalar
+      <i class="fas fa-angle-left right"></i>
+      </p>
+      </a>
+      <ul class="nav nav-treeview">
+      <li class="nav-item">
+      <a href="{% url 'm_t_application' %}" class="nav-link active">
+      <i class="far fa-circle nav-icon"></i>
+      <p>O'qituvchi</p>
+      </a>
+      </li>
+      </ul>
+    </li>
+    {% endblock %}
+
+
+          
+
+{% block base_window %}
+ 
+<!-- Content Wrapper. Contains page content -->
+ 
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        
+        <!-- /.col -->
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Inbox</h3>
+
+              <div class="card-tools">
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" placeholder="Search Mail">
+                  <div class="input-group-append">
+                    <div class="btn btn-primary">
+                      <i class="fas fa-search"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
+                </button>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default btn-sm">
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                  <button type="button" class="btn btn-default btn-sm">
+                    <i class="fas fa-reply"></i>
+                  </button>
+                  <button type="button" class="btn btn-default btn-sm">
+                    <i class="fas fa-share"></i>
+                  </button>
+                </div>
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm">
+                  <i class="fas fa-sync-alt"></i>
+                </button>
+                <div class="float-right">
+                  1-50/200
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button type="button" class="btn btn-default btn-sm">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.float-right -->
+              </div>
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+            
+            {% for a in applica %}   
+            <tr>
+            <td width="20">
+            <div class="icheck-primary">
+            <input type="checkbox" value="" id="check11">
+            <label for="check11"></label>
+            </div>
+            </td>
+
+            <td class="mailbox-star"><a href="#"><i class="fas fa-star-o text-warning"></i></a>
+            </td>
+
+            <td class="mailbox-name"><a href="{% url 'm_t_a_open' a.pk %}">{{a.last_name}} {{a.first_name}}</a>
+            </td>
+
+            <td class="mailbox-subject">{{a.phone_number}}</td>
+            <td class="mailbox-subject">{{a.email}}</td>
+            <td class="mailbox-subject"><i class="fas fa-paperclip"></i></td>
+            <td class="mailbox-subject">{{a.datetime}}</td>
+
+            <td class="mailbox-attachment">
+              <a href="{% url 'm_t_a_delete' a.pk %}">
+                <i class="far fa-trash-alt"></i>
+                </a>
+            </td>
+
+            </tr>
+            
+            {% endfor %}
+
+
+            </tbody>
+            </table>
+            <!-- /.table -->
+            </div>
+            <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+
+
+
+{% endblock %}
+
+

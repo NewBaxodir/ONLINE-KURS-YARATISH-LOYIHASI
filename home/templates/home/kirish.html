@@ -1,0 +1,106 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+  {% block menu %}
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a href="#top" class="top">
+            <i class="fa-solid fa-jet-fighter-up"></i>
+          </a>
+          <div class="collapse navbar-collapse">
+            <div class="navbar-nav me-auto">
+              
+              <a class="navbar-brand logo" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="logo"></i>&nbsp;&nbsp; <span class="robo">Robo</span>school</a>
+  
+              <div id="snackbar">Web sahifa manzili nusxalandi...</div>
+            </div>
+
+            <div class="d-flex">
+              
+               <a href="{% url 'kirish' %}" class="btn btn-light btn1"><i class="fa-solid fa-right-to-bracket"></i>
+                &nbsp;Kirish</a>
+          
+              <a href="{% url 'registration' %}" class="btn btn-danger btn2"><i class="fa-solid fa-user-plus"></i> &nbsp;Ro'yxatdan
+                o'tish</a>
+  
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <nav class="navbar navbar-expand-sm bg-light justify-content-center p-0 b-shadow">
+        <ul class="navbar-nav dem">
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="{% url 'h_news' %}"> IT maqolalar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Vedio teach</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Amaliyot</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link text-secondary">Test</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'h_courses' %}" class="nav-link text-secondary">Kurslar</a>
+          </li>
+        </ul>
+      </nav>
+
+  {% endblock %}
+
+
+{% block savollar %}
+{% endblock %}
+
+
+{% block asoschilari%}
+{% endblock %}
+
+
+{% block body %}
+<style type="text/css">
+form input {
+  height: 70px;
+}
+</style>
+
+<div class="container">
+    <div class="row mt-5 mb-5">
+        <div class="col-lg-5 mt-5 mb-5 m-auto">
+        
+        <form method="POST" action="">
+        {% csrf_token %}
+            <h2 class="text-center mb-4">Tizimga kirish</h2>
+    
+        <div class="mb-4">
+            <input type="text" name="username" class="form-control" aria-describedby="emailHelp" placeholder="Login">
+        </div>
+
+        <div class="mb-3">
+            <input type="password" name="password" class="form-control" placeholder="Parol">
+        </div>
+
+        {% for message in messages %}
+        <p class="text-danger" align="left">{{message}}</p>
+        {% endfor %}
+
+        <div class="d-grid gap-2 col-6 mx-auto mt-5">
+            <button class="btn btn-danger" type="summary">Tizimga kirish</button>
+        </div>
+
+
+        <div class="d-grid gap-2 col-6 mx-auto mt-5">
+            <button type="button" class="btn btn-secondary">Parolni unutdingizmi?</button>
+        </div>
+
+        </form>
+
+</div>
+</div>
+</div> 
+{% endblock %}

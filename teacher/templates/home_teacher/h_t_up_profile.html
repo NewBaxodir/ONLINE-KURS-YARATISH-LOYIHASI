@@ -1,0 +1,175 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block menu %}
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a href="#top" class="top">
+            <i class="fa-solid fa-jet-fighter-up"></i>
+          </a>
+          <div class="collapse navbar-collapse">
+            <div class="navbar-nav me-auto">
+              
+              <a href="{% url 'h_t_page' %}" class="navbar-brand logo">
+                <img src="{% static 'images/logo.png' %}" alt="logo"></i>&nbsp;&nbsp; <span class="robo">Robo</span>school</a>
+  
+              <div id="snackbar">Web sahifa manzili nusxalandi...</div>
+            </div>
+
+            <div class="d-flex">
+              
+    <div class="dropdown">
+    <span class="text-white dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user me-1"></i> {{ request.user.first_name }} {{ request.user.last_name }}</span>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="{% url 'h_t_profile' %}">Profile</a></li>
+    <li><a class="dropdown-item" href="{% url 'logout_view' %}">Chiqish</a></li>
+    </ul>
+    </div>
+  
+            </div>
+          </div>
+        </div>
+      </nav>
+  <nav class="navbar navbar-expand-sm bg-light justify-content-center p-0 b-shadow">
+         <ul class="navbar-nav dem">
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#"> IT maqolalar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Vedio teach</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Amaliyot</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link text-secondary">Test</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'h_t_c_all' %}" class="nav-link text-secondary">Kurslar</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'h_t_mycourses' %}" class="nav-link text-secondary">Mening kurslarim</a>
+          </li>
+        </ul>
+      </nav>
+{% endblock %}
+
+
+{% block savollar %}
+{% endblock %}
+
+
+{% block asoschilari%}
+{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid mb-5">
+
+
+<form method="POST" action="">
+  {% csrf_token %} 
+<div class="container mt-5">
+  
+  
+
+  <div class="row g-2">
+    <div class="col-3">
+      <div class="p-3 border bg-light">
+        
+        <!-- * -->
+        <div class="card" style="width: 15rem; height: auto;">
+        <img src="
+            {% if request.user.userstaff.staff_image %}
+            {{ request.user.userstaff.staff_image.url }}
+            {% else %}
+            {% if request.user.sex == 'Erkak' %}
+            {% static 'images/man.png' %}
+            {% else %}
+            {% static 'images/woman.png' %}
+            {% endif %}
+            {% endif %}
+            " class="card-img-top" alt="...">
+        <div class="card-body">
+        <p class="card-text">{{form2.staff_image}}</p>
+        </div>
+        
+        <div class="card-body">
+          <label for="exampleInputEmail1" class="form-label fw-bold text-muted">Bilish haqida Python / Java /...</label>
+        <p class="card-text">{{ form2.about }}</p>
+        </div>
+
+      </div>
+        <!-- * -->
+
+      </div>
+    </div>
+
+    <div class="col-9">
+      <div class="p-3 border bg-light">
+        <!-- * -->
+        <table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Familya</th>
+      <td>{{form1.last_name}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Ism</th>
+      <td>{{form1.first_name}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Jinsi</th>
+      <td colspan="2">{{form2.sex}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td colspan="2">{{form1.email}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Tel nomber</th>
+      <td colspan="2">{{form2.phone_number}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Adress</th>
+      <td colspan="2">{{form2.address}}</td>
+    </tr>
+
+    <tr>
+      <th scope="row">Login</th>
+      <td colspan="2">{{form1.username}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Parol</th>
+      <td colspan="2">{{request.user.password}}
+      <p>Parolni ko'rsatishni imkoni yo'q lekin yangi parol yaratishingiz mumkun</p></td>
+    </tr>
+
+  </tbody>
+</table>
+<button type="submit" class="btn btn-primary">Ma'lumotlarni saqlash</button>
+        <!-- * -->
+      </div>
+    </div>
+
+
+
+    <div class="col-6">
+      <!-- <div class="p-3 border bg-light">Custom column padding</div> -->
+    </div>
+
+
+    <div class="col-6">
+      <!-- <div class="p-3 border bg-light">Custom column padding</div> -->
+    </div>
+
+
+  </div>
+
+</div>
+</form>
+
+</div>
+{% endblock %}

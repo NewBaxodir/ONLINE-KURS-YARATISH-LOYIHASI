@@ -1,0 +1,147 @@
+{% extends 'moderator_html_database/base.html' %}
+{% load static %}
+
+
+{% block LARGE_LABEL %}
+            <h4 class="m-0">O'quvchi profile</h4>
+            {% endblock %}
+
+{% block where_page %}
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Asosiy</a></li>
+              <li class="breadcrumb-item active">O'quvchi profile</li>
+            </ol>
+          </div>
+          {% endblock %}
+
+
+ {% block moderator_database %}
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Foydalanuvchilar
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'm_student_database' %}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>O'quvchi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'm_teach_database' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>O'qituvchi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'moderator_database' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Boshqaruvchi</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          {% endblock %}
+
+
+          
+
+{% block base_window %}
+
+<!-- Main content -->
+<section class="content">
+<div class="container-fluid">
+<div class="row">
+  
+<!-- col-md-12 -->
+<div class="col-md-12">
+<!-- Profile Image -->
+<div class="card card-primary card-outline">
+<div class="card-body box-profile">
+<div class="text-center">
+<img class="profile-user-img img-fluid img-circle"
+            src="
+            {% if user.staff_image %}
+            {{ user.staff_image.url }}
+            {% else %}
+            {% if user.sex == 'Erkak' %}
+            {% static 'images/man.png' %}
+            {% else %}
+            {% static 'images/woman.png' %}
+            {% endif %}
+            {% endif %}
+            "alt="User profile picture">
+
+</div>
+
+<h3 class="profile-username text-center">{{ user.user.last_name }} {{ user.user.first_name}}</h3>
+<p class="text-muted text-center">Daraja: O'quvchi</p>
+
+  <table class="table">
+                      <tr>
+                        <th style="width:20%">Familya:</th>
+                        <td>{{ user.user.last_name }}</td>
+                      </tr>
+                      <tr>
+                        <th>Ism:</th>
+                        <td>{{ user.user.first_name }}</td>
+                      </tr>
+                      <tr>
+                        <th>Jinsi:</th>
+                        <td>{{ user.sex }}</td>
+                      </tr>
+
+                      <tr>
+                        <th>Email:</th>
+                        <td>{{ user.user.email }}</td>
+                      </tr>
+                      <tr>
+                        <th>Telnomer:</th>
+                        <td>{{ user.phone_number }}</td>
+                      </tr>
+                      <tr>
+                        <th>Soha:</th>
+                        <td>{{ user.about }}</td>
+                      </tr>
+                      <tr>
+                        <th>Manzil:</th>
+                        <td>{{ user.address }}</td>
+                      </tr>
+                      <tr>
+                        <th>Login:</th>
+                        <td>{{ user.user.username }}</td>
+                      </tr>
+                      <tr>
+                        <th>Parol:</th>
+                        <td>{{ user.user.password }}</td>
+                      </tr>
+
+                    </table>
+
+
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- col-md-12 -->
+
+
+           
+ 
+</div>
+</div>
+</section>
+          
+               
+
+{% endblock %}
+
+
+
+

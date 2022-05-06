@@ -1,0 +1,131 @@
+{% extends 'moderator_html_database/base.html' %}
+{% load static %}
+
+
+{% block LARGE_LABEL %}
+  <h4 class="m-0">Yangi topshiriq qo'shish</h4>
+{% endblock %}
+
+{% block where_page %}
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Asosiy</a></li>
+              <li class="breadcrumb-item active">Yangi topshiriq qo'shish</li>
+            </ol>
+          </div>
+          {% endblock %}
+
+
+{% block maqolalar %}
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon far fa-plus-square"></i>
+              <p>
+                Maqolalar
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'm_tasks' %}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Topshiriq
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'm_articles' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Maqola
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'm_write' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Dastur kod
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+              </li>   
+            </ul>
+          </li>
+          {% endblock %}
+
+
+{% block base_window %}
+
+    <!-- Main content -->
+    <section class="content">
+      <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="container-fluid">
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Tizimga yangi kurs qo'shish</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+
+
+            <div class="card-body">
+            <div class="row">
+            <div class="col-md-12">
+            
+            <div class="form-group">
+            <label for="inputName">Topshiriq rasm yuklang </label>
+            <br>
+            {{ form.image }}
+            </div>
+
+            <div class="form-group">
+            <label for="inputName">Sarlavhani kiriting</label>
+            {{ form.title }}
+            </div>
+
+  
+            <div class="form-group">
+            <label for="inputName">Sarlavhani kiriting</label>
+            {{ form.description }}
+            </div>
+
+
+            <div class="form-group">
+                    <label for="exampleInputEmail1">Topshiriqni to'liq yozish maydoni</label>
+                    <br>
+                    {{ form.media }}
+                    {{ form.text }}
+                  </div>
+
+            </div>
+            </div>
+            </div>
+
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <a href="#" class="btn btn-secondary">orqaga</a>
+          <input type="submit" value="Yaratish" class="btn btn-success float-right">
+        </div>
+      </div>
+    </form>
+    </section>
+    <!-- /.content -->
+<br>
+<br>
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+<!-- title -->
+{% block title %} Bosh sahifa {% endblock %}
+<!-- /title -->
+
+
+
+{% block kirish %}
+<a href="{% url 'kirish' %}">
+	     <button type="button" class="btn btn-light mx-3">Kirish</button>
+	     </a>
+{% endblock %}
+
+
+{% block registration %}
+<a href="{% url 'registration' %}">
+	<button type="button" class="btn btn-danger">Ro'yxatdan o'tish</button>
+		</a>
+      {% endblock %}
+
+
+{% block body%}
+<!-- border: 1px solid red; -->
+<div style="background-color: #f6f6f6;">
+	
+
+<!-- style="border: 1px solid red;" -->
+<div class="container mt-4">
+  <div class="row">
+  	<!-- style="border: 1px solid red;" -->
+    <div class="col-md-9" >
+    
+  <!-- Navbarning chegasasi -->
+  <!-- style="border: 1px solid red;" -->
+  <nav class="navbar navbar-light" >
+  <div class="container-fluid">
+  <a class="navbar-brand fs-3">Maqolalar</a>
+  
+  <div class="me-2">
+	  <a href="{% url 'news' %}">
+	  <button type="button" class="btn btn-dark me-3">Hammasi</button>
+	  </a>
+	  <a href="{% url 'tasks' %}">
+  	  <button type="button" class="btn border border-dark me-3">Topshiriq</button>
+	  </a>
+	  <a href="{% url 'articles' %}">
+	  <button type="button" class="btn border border-dark me-3">Maqola</button>
+	  </a>
+	  <a href="{% url 'write' %}">
+	  <button type="button" class="btn border border-dark">Dasturlar</button>
+	  </a>
+ </div>
+  </div>
+  </nav>
+  <!-- Navbarning chegarasi -->
+<!-- style="border: 1px solid red;" -->
+  <div class="container-fluid mt-2" >
+<!-- style="border: 1px solid red;" -->
+  <div class="row" >
+    
+
+
+    
+<!-- col-md-6 -->
+<div class="col-md-12">
+  <div class="card mb-3">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ articles.title }} {{ tasks.title }}</h5>
+    <p class="card-text">{{ articles.description }}</p>
+    <br>
+    <p class="card-text">{{ articles.text }}</p>
+    <p class="card-text"><small class="text-muted">{{ articles.datetime }}</small></p>
+  </div>
+</div>
+</div>
+<!-- col-md-6 -->
+     
+
+
+
+
+
+
+  
+
+
+
+</div>
+</div>
+</div>
+
+<!-- col-md-3 -->
+<!-- style="border: 1px solid red;" -->
+<div class="col-md-3" >
+	
+  
+ <!-- Card -->
+ <div class="card mt-5" style="width: 18rem;">
+ <img src="{% static 'images/man_woman.gif' %}" class="card-img-top" alt="...">
+ <div class="card-body">
+ <h5 class="card-title">Card title</h5>
+ <p class="card-text">Some quick example</p>
+ </div>
+</div>
+ <!-- Card -->
+
+  <!-- Card -->
+ <div class="card mt-5" style="width: 18rem;">
+ <img src="{% static 'images/man_woman.gif' %}" class="card-img-top" alt="...">
+ <div class="card-body">
+ <h5 class="card-title">Card title</h5>
+ <p class="card-text">Some quick example</p>
+ </div>
+</div>
+ <!-- Card -->
+
+
+ <!-- Card -->
+ <div class="card mt-5" style="width: 18rem;">
+ <img src="{% static 'images/man_woman.gif' %}" class="card-img-top" alt="...">
+ <div class="card-body">
+ <h5 class="card-title">Card title</h5>
+ <p class="card-text">Some quick example</p>
+ </div>
+</div>
+ <!-- Card -->
+
+
+
+
+</div>
+<!-- col-md-3 -->
+
+
+</div>
+</div>
+</div>
+{% endblock %}

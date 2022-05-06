@@ -1,0 +1,122 @@
+{% extends 'moderator_html_database/base.html' %}
+{% load static %}
+
+
+{% block LARGE_LABEL %}
+<h3>Darslar</h3>
+{% endblock %}
+
+{% block where_page %}
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Asosiy</a></li>
+              <li class="breadcrumb-item active">Darslar</li>
+            </ol>
+          </div>
+          {% endblock %}
+
+
+
+     {% block create_course %}
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Kurslar nazorati
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'm_t_courses' %}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kurs sozlamalari</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'm_c_database' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kurs bazasi</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          {% endblock %}
+
+
+          
+
+{% block base_window %}
+ <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card card-solid">
+        <div class="card-body pb-0">
+        
+
+       <section class="content">
+        <div class="row">
+            <div class="col-12" id="accordion">
+         
+                {% for a in name %}
+                <div class="card card-primary card-outline">
+                    <a class="d-block w-100" data-toggle="collapse" href="#collapseThree{{forloop.counter}}">
+                        <div class="card-header">
+                            <h4 class="card-title" style="width: 80%;">
+                                {{forloop.counter}}. {{ a.title }}
+                            </h4>
+                            <a class="btn btn-info btn-sm" href="#">
+    <i class="fas fa-pencil-alt"></i>
+    Edit
+  </a>
+    <a class="btn btn-danger btn-sm" href="{% url 'm_t_c_delete' a.id %}">
+  <i class="fas fa-trash"></i>
+  Delete
+  </a>
+
+                        </div>
+
+                    </a>
+                    <div id="collapseThree{{forloop.counter}}" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            {{ a.title }}
+
+                            <br>
+
+                            {{ a.description }}
+
+                            <br>
+
+                             {{ a.text }}
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+<a href="{% url 'm_t_c_l_create' course.pk %}">
+<button type="button" class="btn btn-block btn-primary">Keyingi darsni yaratish</button>
+</a>
+<br>
+            </div>
+        </div>
+    </section>
+
+
+
+
+        
+   
+        </div>
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+{% endblock %}
+
+
+
+

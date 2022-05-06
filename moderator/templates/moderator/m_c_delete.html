@@ -1,0 +1,96 @@
+{% extends 'moderator_html_database/base.html' %}
+{% load static %}
+
+
+{% block LARGE_LABEL %}
+            <h1 class="m-0">Kurs o'chirish</h1>
+            {% endblock %}
+
+{% block where_page %}
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Asosiy</a></li>
+              <li class="breadcrumb-item active">Kurs o'chirish</li>
+            </ol>
+          </div>
+          {% endblock %}
+
+
+
+     {% block create_course %}
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Kurslar nazorati
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'm_t_courses' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kurs sozlamalari</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'm_c_database' %}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kurs bazasi</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          {% endblock %}
+
+
+
+{% block base_window %}
+
+<section class="content">
+<form method="POST" action="">
+{% csrf_token %}
+<div class="container-fluid">
+<div class="col-md-12">
+
+<!-- About Me Box -->
+<div class="card card-primary">
+<div class="card-header">
+<h3 class="card-title">{{ course.name }} - Kursi</h3>
+</div>
+<!-- /.card-header -->
+<div class="card-body">
+<strong><i class="fas fa-book mr-1"></i> Darslik</strong>
+<p class="text-danger">
+Barcha darsliklar o'chib ketadi va qayta tiklanmaydi.
+</p>
+<hr>
+<strong><i class="fas fa-map-marker-alt mr-1"></i> Manzil</strong>
+<p class="text-danger">Barcha manzilllar o'chib ketadi va qayta tiklanmaydi.</p>
+<hr>
+<strong><i class="fas fa-pencil-alt mr-1"></i>Qo'l yozmalar</strong>
+<p class="text-muted">
+  <span class="text-danger">Barcha qo'l yozma darslar o'chib ketadi va qayta tiklanmaydi</span>
+</p>
+<hr>
+<strong><i class="far fa-file-alt mr-1"></i> Xabarlar</strong>
+<p class="text-danger">Barcha xabarlar o'chib ketadi va qayta tiklanmaydi.</p>
+
+<button type="submit" class="btn btn-block btn-danger">
+<i class="fas fa-trash"></i>
+Agar barcha xolatlarga rozi bo'lsangiz tasdiqlang
+</button>
+
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+
+</form>
+</section>
+<!-- /.content -->
+
+{% endblock %}
+
+
+

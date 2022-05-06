@@ -1,0 +1,130 @@
+{% extends 'moderator_html_database/base.html' %}
+{% load static %}
+
+
+{% block LARGE_LABEL %}
+  <h4 class="m-0">Maqolalar</h4>
+{% endblock %}
+
+{% block where_page %}
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Asosiy</a></li>
+              <li class="breadcrumb-item active">Maqolalar</li>
+            </ol>
+          </div>
+          {% endblock %}
+
+
+{% block maqolalar %}
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon far fa-plus-square"></i>
+              <p>
+                Maqolalar
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'm_tasks' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Topshiriq
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'm_articles' %}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Maqola
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'm_write' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Dastur kod
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+              </li>   
+            </ul>
+          </li>
+          {% endblock %}
+
+
+{% block base_window %}
+
+ <section class="content">
+  <div class="container-fluid">
+    <div class="card">
+      
+  <div class="card-header">
+  <div class="card-tools">
+  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+  <i class="fas fa-minus"></i>
+  </button>
+  <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+  <i class="fas fa-times"></i>
+  </button>
+  </div>
+  </div>
+
+  
+  <div class="card-header">
+  <a href="{% url 'm_a_create' %}">
+  <button type="button" class="btn btn-block btn-primary">Tizimga yangi maqola qo'shish</button>
+  </a>
+  </div>
+
+  <div class="card-body pb-0">
+  <div class="row">
+            
+  {% for i in articles %}
+  <div class="col-sm-3">
+    <div class="card card-primary">
+    <img class="card-img-top" src="{% if i.image %}{{ i.image.url }}{% endif %}" alt="Dist Photo 1">
+    <div class="card-body">
+    <h5>{{ i.title }}</h5>
+    <p>{{ i.description }}</p>
+    
+    <span class="text-muted float-right">{{ i.datetime }}</span>
+
+
+  <div class="text-right">
+  <a class="btn btn-info btn-sm" href="{% url 'm_a_update' i.pk %}">
+    <i class="fas fa-pencil-alt"></i>
+    Yangilash
+  </a>
+  <a class="btn btn-danger btn-sm" href="{% url 'm_a_delete' i.pk %}">
+  <i class="fas fa-trash"></i>
+  O'chirish
+  </a>
+
+   </div>
+
+
+  </div>
+  </div>
+  </div>
+  {% endfor %}
+
+
+  </div>
+  </div>
+  </div>
+
+
+  </section>
+
+
+{% endblock %}
+
+
+
+
